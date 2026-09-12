@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KATEMA ACADEMIA</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>KATEMA ACADEMIA</h1>
+
+        <p>Your Personal AI Tutor</p>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- =====================================
+             SLIDE 1 — WELCOME
+        ====================================== -->
+
+        <section id="slide-welcome" class="slide active">
+
+            <div class="welcome-section">
+
+                <h2>Welcome, Student 👋</h2>
+
+                <p>
+                    Learn, practise and improve with
+                    your personal AI tutor.
+                </p>
+
+                <p>
+                    Your learning journey starts here.
+                </p>
+
+                <button onclick="goToSlide('slide-grade')">
+                    Start Learning →
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SLIDE 2 — LEVEL
+        ====================================== -->
+
+        <section id="slide-grade" class="slide">
+
+            <h2>Choose Your Level</h2>
+
+            <p>
+                Select the class you are currently studying.
+            </p>
+
+
+            <div id="grade-buttons">
+
+                <button onclick="selectGrade('Form 1')">
+                    Form 1
+                </button>
+
+                <button onclick="selectGrade('Form 2')">
+                    Form 2
+                </button>
+
+                <button onclick="selectGrade('Form 3')">
+                    Form 3
+                </button>
+
+                <button onclick="selectGrade('Form 4')">
+                    Form 4
+                </button>
+
+                <button onclick="selectGrade('Grade 10')">
+                    Grade 10
+                </button>
+
+                <button onclick="selectGrade('Grade 11')">
+                    Grade 11
+                </button>
+
+                <button onclick="selectGrade('Grade 12')">
+                    Grade 12
+                </button>
+
+            </div>
+
+
+            <p id="selected-grade"></p>
+
+
+            <div class="navigation">
+
+                <button onclick="goToSlide('slide-welcome')">
+                    ← Back
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SLIDE 3 — SUBJECT
+        ====================================== -->
+
+        <section id="slide-subject" class="slide">
+
+            <h2>Choose Your Subject</h2>
+
+            <p id="subject-instruction">
+                Choose a subject.
+            </p>
+
+
+            <div id="subject-buttons">
+                <!-- JavaScript will add subjects here -->
+            </div>
+
+
+            <p id="selected-subject"></p>
+
+
+            <div class="navigation">
+
+                <button onclick="goToSlide('slide-grade')">
+                    ← Back
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SLIDE 4 — TOPIC
+        ====================================== -->
+
+        <section id="slide-topic" class="slide">
+
+            <h2>Choose a Topic</h2>
+
+            <p id="topic-instruction">
+                Choose a topic.
+            </p>
+
+
+            <div id="topic-buttons">
+                <!-- JavaScript will add topics here -->
+            </div>
+
+
+            <p id="selected-topic"></p>
+
+
+            <div class="navigation">
+
+                <button onclick="goToSlide('slide-subject')">
+                    ← Back
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SLIDE 5 — AI TUTOR
+        ====================================== -->
+
+        <section id="slide-tutor" class="slide">
+
+            <h2>🤖 KATEMA AI Tutor</h2>
+
+
+            <p id="lesson-welcome">
+                Welcome to your lesson.
+            </p>
+
+
+            <div class="teacher-message">
+
+                <strong>AI Tutor:</strong>
+
+                <p id="teacher-text">
+                    Hello! I am your AI tutor.
+                    Let's learn together.
+                </p>
+
+            </div>
+
+
+            <button onclick="startLesson()">
+                Start Lesson →
+            </button>
+
+
+            <div class="navigation">
+
+                <button onclick="goToSlide('slide-topic')">
+                    ← Back
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SLIDE 6 — LESSON
+        ====================================== -->
+
+        <section id="slide-lesson" class="slide">
+
+            <h2>📖 Your Lesson</h2>
+
+
+            <div id="lesson-content">
+
+                <h3 id="lesson-title">
+                    Lesson
+                </h3>
+
+
+                <p id="lesson-explanation">
+                    Your lesson will appear here.
+                </p>
+
+
+                <h4>Example</h4>
+
+
+                <p id="lesson-example">
+                    Examples will appear here.
+                </p>
+
+
+                <div class="navigation">
+
+                    <button onclick="goToSlide('slide-tutor')">
+                        ← Back
+                    </button>
+
+                    <button onclick="goToSlide('slide-practice')">
+                        Continue →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SLIDE 7 — PRACTICE
+        ====================================== -->
+
+        <section id="slide-practice" class="slide">
+
+            <h2>📝 Practice</h2>
+
+
+            <p id="question-number">
+                Question 1 of 3
+            </p>
+
+
+            <p id="question-text">
+                Change this sentence into the past tense:
+            </p>
+
+
+            <p>
+                <strong id="question-sentence">
+                    She goes to school every day.
+                </strong>
+            </p>
+
+
+            <input
+                type="text"
+                id="student-answer"
+                placeholder="Type your answer here"
+            >
+
+
+            <button onclick="checkAnswer()">
+                Submit Answer
+            </button>
+
+
+            <p id="feedback"></p>
+
+
+            <p id="score-display">
+                Score: 0
+            </p>
+
+
+            <button onclick="nextQuestion()">
+                Next Question →
+            </button>
+
+
+            <div class="navigation">
+
+                <button onclick="goToSlide('slide-lesson')">
+                    ← Back to Lesson
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SLIDE 8 — RESULTS
+        ====================================== -->
+
+        <section id="slide-results" class="slide">
+
+            <h2>🎉 Lesson Complete!</h2>
+
+
+            <p>
+                Well done! You have completed this
+                learning activity.
+            </p>
+
+
+            <h3 id="final-score">
+                Your Score: 0
+            </h3>
+
+
+            <p id="final-topic">
+                Topic completed.
+            </p>
+
+
+            <button onclick="goToSlide('slide-topic')">
+                Study Another Topic
+            </button>
+
+        </section>
+
+
+    </main>
+  
+  <!-- =====================================
+     LEARNING PROGRESS
+====================================== -->
+
+<div class="progress-container">
+
+    <div class="progress-step active" id="progress-level">
+        <span>1</span>
+        <small>Level</small>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step" id="progress-subject">
+        <span>2</span>
+        <small>Subject</small>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step" id="progress-topic">
+        <span>3</span>
+        <small>Topic</small>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step" id="progress-learn">
+        <span>4</span>
+        <small>Learn</small>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step" id="progress-practice">
+        <span>5</span>
+        <small>Practice</small>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step" id="progress-results">
+        <span>6</span>
+        <small>Results</small>
+    </div>
+
+</div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

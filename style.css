@@ -1,0 +1,656 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    background: linear-gradient(135deg, #172554, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 28px 20px;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+
+/* =========================================
+   SLIDES
+========================================= */
+
+.slide {
+    display: none;
+
+    background: white;
+
+    padding: 40px 30px;
+
+    min-height: 500px;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.08);
+
+    text-align: center;
+
+    animation: slideIn 0.35s ease;
+}
+
+
+/* Only the active slide appears */
+
+.slide.active {
+    display: block;
+}
+
+
+/* Slide animation */
+
+@keyframes slideIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.welcome-section {
+    padding-top: 80px;
+}
+
+.welcome-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.welcome-section p {
+    color: #64748b;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+.slide h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.slide h3 {
+    margin-bottom: 15px;
+}
+
+.slide h4 {
+    margin: 20px 0 10px;
+}
+
+.slide > p {
+    color: #64748b;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button {
+    padding: 14px 22px;
+
+    margin: 7px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(37, 99, 235, 0.25);
+}
+
+
+/* =========================================
+   SELECTION BUTTONS
+========================================= */
+
+#grade-buttons,
+#subject-buttons,
+#topic-buttons {
+    margin-top: 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+#grade-buttons button,
+#subject-buttons button,
+#topic-buttons button {
+
+    margin: 0;
+
+    background: white;
+
+    color: #172033;
+
+    border: 2px solid #e2e8f0;
+
+    min-height: 60px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+
+#grade-buttons button:hover,
+#subject-buttons button:hover,
+#topic-buttons button:hover {
+
+    border-color: #2563eb;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+}
+
+
+/* =========================================
+   SELECTION DISPLAY
+========================================= */
+
+#selected-grade,
+#selected-subject,
+#selected-topic {
+
+    margin-top: 25px;
+
+    padding: 12px;
+
+    background: #eff6ff;
+
+    border-radius: 10px;
+
+    color: #2563eb;
+
+    font-weight: bold;
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    margin-top: 35px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e2e8f0;
+}
+
+.navigation button:first-child {
+
+    background: #f1f5f9;
+
+    color: #475569;
+}
+
+.navigation button:first-child:hover {
+
+    background: #e2e8f0;
+
+    color: #172033;
+}
+
+
+/* =========================================
+   AI TUTOR
+========================================= */
+
+.teacher-message {
+
+    margin: 30px auto;
+
+    padding: 22px;
+
+    max-width: 650px;
+
+    background: #eff6ff;
+
+    border-left: 5px solid #2563eb;
+
+    border-radius: 14px;
+
+    text-align: left;
+}
+
+.teacher-message strong {
+
+    color: #2563eb;
+
+    font-size: 17px;
+}
+
+.teacher-message p {
+
+    margin-top: 10px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   LESSON
+========================================= */
+
+#lesson-content {
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    background: #f8fafc;
+
+    border-radius: 15px;
+
+    border: 1px solid #e2e8f0;
+
+    text-align: left;
+}
+
+#lesson-title {
+
+    color: #1d4ed8;
+
+    font-size: 23px;
+}
+
+#lesson-explanation,
+#lesson-example {
+
+    line-height: 1.8;
+
+    color: #475569;
+}
+
+
+/* =========================================
+   PRACTICE
+========================================= */
+
+#question-number {
+
+    font-weight: bold;
+
+    color: #64748b;
+}
+
+#question-text {
+
+    margin-top: 20px;
+
+    font-weight: bold;
+
+    color: #172033;
+}
+
+#question-sentence {
+
+    display: block;
+
+    background: #f8fafc;
+
+    padding: 18px;
+
+    margin: 20px 0;
+
+    border-left: 4px solid #2563eb;
+
+    border-radius: 8px;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+input {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin: 12px 0;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+input:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+/* =========================================
+   FEEDBACK
+========================================= */
+
+#feedback {
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   SCORE
+========================================= */
+
+#score-display,
+#final-score {
+
+    margin-top: 20px;
+
+    color: #2563eb;
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    main {
+        padding: 10px;
+
+        margin-top: 15px;
+    }
+
+    .slide {
+
+        padding: 30px 20px;
+
+        min-height: 520px;
+
+        border-radius: 18px;
+    }
+
+    .welcome-section {
+
+        padding-top: 60px;
+    }
+
+    .welcome-section h2 {
+
+        font-size: 27px;
+    }
+
+    #grade-buttons,
+    #subject-buttons,
+    #topic-buttons {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    #grade-buttons button,
+    #subject-buttons button,
+    #topic-buttons button {
+
+        width: 100%;
+
+    }
+
+    button {
+
+        width: 100%;
+
+        margin: 6px 0;
+
+    }
+
+}/* =========================================
+   LEARNING PROGRESS
+========================================= */
+
+.progress-container {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 25px;
+
+    padding: 10px 5px;
+
+}
+
+
+.progress-step {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    min-width: 55px;
+
+    color: #94a3b8;
+
+}
+
+
+.progress-step span {
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e2e8f0;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+}
+
+
+.progress-step small {
+
+    margin-top: 6px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+}
+
+
+.progress-line {
+
+    height: 2px;
+
+    width: 35px;
+
+    background: #e2e8f0;
+
+}
+
+
+/* Active step */
+
+.progress-step.active {
+
+    color: #2563eb;
+
+}
+
+
+.progress-step.active span {
+
+    background: #2563eb;
+
+    color: white;
+
+}
+
+
+/* Completed step */
+
+.progress-step.completed {
+
+    color: #2563eb;
+
+}
+
+
+.progress-step.completed span {
+
+    background: #2563eb;
+
+    color: white;
+
+}
+
+
+.progress-step.completed + .progress-line {
+
+    background: #2563eb;
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .progress-container {
+
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+        padding-bottom: 15px;
+
+    }
+
+    .progress-step {
+
+        min-width: 52px;
+
+    }
+
+    .progress-line {
+
+        width: 20px;
+
+    }
+
+}
