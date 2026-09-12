@@ -74,7 +74,7 @@ exports.handler = async function (event) {
         return {
             statusCode: 500,
             body: JSON.stringify({
-                error: "The AI Tutor is temporarily unavailable."
+                error: error.message || "Unknown error"
             })
         };
     }
