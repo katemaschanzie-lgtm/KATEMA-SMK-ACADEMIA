@@ -561,40 +561,41 @@ function selectTopic(topic) {
    START LESSON
 ========================================= */
 
-function startLesson() {
+async function startLesson() {
 
     document.getElementById("teacher-text").textContent =
-
-        "Welcome! Today we're learning " +
-        selectedTopic +
-        " in " +
-        selectedSubject +
-        ". I'll explain the concept, give you examples, and then test your understanding.";
-
+        "Preparing your lesson...";
 
     document.getElementById("lesson-title").textContent =
-
-        selectedTopic +
-        " — " +
-        selectedSubject;
-
+        selectedTopic + " — " + selectedSubject;
 
     document.getElementById("lesson-explanation").textContent =
-
-        "This lesson will help you understand the main ideas of " +
-        selectedTopic +
-        " and apply what you learn through examples and practice.";
-
+        "Your AI Tutor is preparing a lesson for you...";
 
     document.getElementById("lesson-example").textContent =
-
-        "Your AI tutor will provide examples related to " +
-        selectedTopic +
-        " as we develop the lesson.";
-
+        "Please wait...";
 
     goToSlide("slide-lesson");
 
+
+    const prompt =
+        "You are KATEMA AI Tutor teaching a Zambian secondary school student. " +
+        "The student is studying " + selectedGrade + ". " +
+        "The subject is " + selectedSubject + ". " +
+        "The topic is " + selectedTopic + ". " +
+        "Create a clear, accurate, exam-focused lesson suitable for this level. " +
+        "Explain the topic simply, give important points, and provide useful examples. " +
+        "Do not assume the student already understands the topic.";
+
+
+    const reply = await askAITutor(prompt);
+
+
+    document.getElementById("lesson-explanation").textContent =
+        reply;
+
+    document.getElementById("teacher-text").textContent =
+        "Here is your lesson on " + selectedTopic + ".";
 }
 
 
