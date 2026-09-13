@@ -231,44 +231,65 @@
 
         <section id="slide-lesson" class="slide">
 
-            <h2>📖 Your Lesson</h2>
+    <h2>📖 Your Lesson</h2>
 
+    <p id="lesson-welcome">
+        Your AI Tutor will guide you through this lesson step by step.
+    </p>
 
-            <div id="lesson-content">
+    <div class="lesson-card">
+        <h3 id="lesson-title">Lesson</h3>
+    </div>
 
-                <h3 id="lesson-title">
-                    Lesson
-                </h3>
+    <div class="lesson-card">
+        <h3>🎯 Learning Objectives</h3>
+        <div id="lesson-objectives">
+            Your learning objectives will appear here.
+        </div>
+    </div>
 
+    <div class="lesson-card">
+        <h3>📚 Explanation</h3>
+        <div id="lesson-explanation">
+            Your lesson explanation will appear here.
+        </div>
+    </div>
 
-                <p id="lesson-explanation">
-                    Your lesson will appear here.
-                </p>
+    <div class="lesson-card">
+        <h3>✏️ Worked Example</h3>
+        <div id="lesson-example">
+            Your worked example will appear here.
+        </div>
+    </div>
 
+    <div class="lesson-card">
+        <h3>🧠 Key Points</h3>
+        <div id="lesson-key-points">
+            Important points will appear here.
+        </div>
+    </div>
 
-                <h4>Example</h4>
+    <div class="lesson-card">
+        <h3>📝 Mini Practice</h3>
+        <div id="lesson-practice">
+            Your practice activity will appear here.
+        </div>
+    </div>
 
+    <div class="navigation">
 
-                <p id="lesson-example">
-                    Examples will appear here.
-                </p>
+        <button onclick="goToSlide('slide-tutor')">
+            ← Back
+        </button>
 
+        <button onclick="goToSlide('slide-practice')">
+            Continue to Practice →
+        </button>
 
-                <div class="navigation">
-
-                    <button onclick="goToSlide('slide-tutor')">
-                        ← Back
-                    </button>
-
-                    <button onclick="goToSlide('slide-practice')">
-                        Continue →
-                    </button>
-
-                </div>
-
-            </div>
+    </div>
 
         </section>
+
 
 
 
