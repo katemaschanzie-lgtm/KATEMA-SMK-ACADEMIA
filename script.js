@@ -764,6 +764,6 @@ async function askAITutor(message) {
 
     } catch (error) {
         console.error("AI Tutor error:", error);
-        return "Sorry, I am having trouble connecting right now.";
+        return "AI ERROR: " + error.message;
     }
 }
