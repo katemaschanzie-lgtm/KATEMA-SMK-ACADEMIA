@@ -644,6 +644,10 @@ async function startLesson() {
 
         document.getElementById("teacher-text").textContent =
             "Here is your lesson on " + selectedTopic + ".";
+       
+       if (window.MathJax) {
+    MathJax.typesetPromise();
+        }
 
     } catch (error) {
 
