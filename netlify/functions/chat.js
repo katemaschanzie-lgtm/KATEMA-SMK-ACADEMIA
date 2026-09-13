@@ -23,26 +23,33 @@ exports.handler = async function (event) {
         }
 
         const response = await fetch(
-            "https://api.openai.com/v1/responses",
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
             {
                 method: "POST",
 
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+                    "x-goog-api-key": process.env.GEMINI_API_KEY
                 },
 
                 body: JSON.stringify({
-                    model: "gpt-5",
-                    input: [
-                        {
-                            role: "system",
-                            content:
-                                "You are KATEMA AI Tutor, a helpful and patient tutor for Zambian secondary school students. Explain concepts clearly and at an appropriate level. Encourage students to understand rather than simply giving answers."
-                        },
+                    system_instruction: {
+                        parts: [
+                            {
+                                text:
+                                    "You are KATEMA AI Tutor, a helpful and patient tutor for Zambian secondary school students. Explain concepts clearly and at an appropriate level. Encourage students to understand rather than simply giving answers."
+                            }
+                        ]
+                    },
+
+                    contents: [
                         {
                             role: "user",
-                            content: message
+                            parts: [
+                                {
+                                    text: message
+                                }
+                            ]
                         }
                     ]
                 })
@@ -55,21 +62,29 @@ exports.handler = async function (event) {
             return {
                 statusCode: response.status,
                 body: JSON.stringify({
-                    error: data.error?.message || "OpenAI request failed."
+                    error:
+                        data.error?.message ||
+                        "Gemini API request failed."
                 })
             };
         }
 
+        const reply =
+            data.candidates?.[0]?.content?.parts
+                ?.map(part => part.text || "")
+                .join("") ||
+            "I could not generate a response.";
+
         return {
             statusCode: 200,
             body: JSON.stringify({
-                reply: data.output_text || "I could not generate a response."
+                reply: reply
             })
         };
 
     } catch (error) {
 
-        console.error("KATEMA AI Tutor error:", error);
+        console.error("KATEMA Gemini error:", error);
 
         return {
             statusCode: 500,
