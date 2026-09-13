@@ -838,6 +838,92 @@ async function askAITutor(message) {
 
 let tutorStep = 0;
 
+async function nextTutorStep() {
+
+    tutorStep++;
+
+    document.getElementById("tutor-message").textContent =
+        "🤖 Your AI Tutor is thinking...";
+
+    document.getElementById("tutor-question").innerHTML =
+        "<p>Please wait...</p>";
+
+    document.getElementById("tutor-options").innerHTML = "";
+
+
+    const prompt =
+        "You are KATEMA AI Tutor teaching a " +
+        selectedGrade +
+        " student studying " +
+        selectedSubject +
+        ". The current topic is " +
+        selectedTopic +
+        ". " +
+
+        "Create ONE interactive teaching moment. " +
+        "Do not simply give the student the answer. " +
+        "Ask a realistic hypothetical or thinking question " +
+        "that makes the learner think about the topic. " +
+        "Then provide exactly three possible answers. " +
+
+        "Return ONLY valid JSON with exactly these fields: " +
+        "message, question, options. " +
+
+        "The message should briefly guide and encourage the learner. " +
+        "The question should make the learner think. " +
+        "The options should contain exactly three answer choices. ";
+
+
+    const reply = await askAITutor(prompt);
+
+
+    try {
+
+        const tutor = JSON.parse(reply);
+
+
+        document.getElementById("tutor-message").textContent =
+            tutor.message;
+
+
+        document.getElementById("tutor-question").innerHTML =
+            "<p>🤔 " + tutor.question + "</p>";
+
+
+        tutor.options.forEach(function(option) {
+
+            const button = document.createElement("button");
+
+            button.textContent = option;
+
+            button.className = "tutor-option";
+
+            document.getElementById("tutor-options")
+                .appendChild(button);
+
+        });
+
+
+        document.getElementById("tutor-next").textContent =
+            "Continue →";
+
+
+    } catch (error) {
+
+        console.error("Tutor formatting error:", error);
+
+        document.getElementById("tutor-message").textContent =
+            "I had trouble preparing the next question.";
+
+        document.getElementById("tutor-question").innerHTML =
+            "<p>Please try again.</p>";
+
+    }
+
+}
+
+let tutorStep = 0;
+
 const tutorSteps = [
     {
         message: "Let's discover this topic together. 🤔",
