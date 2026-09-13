@@ -569,11 +569,23 @@ async function startLesson() {
     document.getElementById("lesson-title").textContent =
         selectedTopic + " — " + selectedSubject;
 
-    document.getElementById("lesson-explanation"). textcontent =
-        "Your AI Tutor is preparing a lesson for you...";
+    document.getElementById("lesson-welcome").textContent =
+        "Your AI Tutor is preparing a step-by-step lesson for you.";
+
+    document.getElementById("lesson-objectives").textContent =
+        "Preparing your learning objectives...";
+
+    document.getElementById("lesson-explanation").textContent =
+        "Your AI Tutor is preparing the explanation...";
 
     document.getElementById("lesson-example").textContent =
-        "Please wait...";
+        "Preparing a worked example...";
+
+    document.getElementById("lesson-key-points").textContent =
+        "Preparing the key points...";
+
+    document.getElementById("lesson-practice").textContent =
+        "Preparing your mini practice...";
 
     goToSlide("slide-lesson");
 
@@ -583,19 +595,68 @@ async function startLesson() {
         "The student is studying " + selectedGrade + ". " +
         "The subject is " + selectedSubject + ". " +
         "The topic is " + selectedTopic + ". " +
+
         "Create a clear, accurate, exam-focused lesson suitable for this level. " +
-        "Explain the topic simply, give important points, and provide useful examples. " +
-        "Do not assume the student already understands the topic.";
+        "Do not assume the student already understands the topic. " +
+
+        "Return the lesson ONLY as valid JSON. " +
+        "Do not use markdown code fences. " +
+        "Do not add any text before or after the JSON. " +
+
+        "The JSON must have exactly these six fields: " +
+        "objectives, explanation, example, keyPoints, practice, and introduction. " +
+
+        "The objectives field should contain clear learning objectives. " +
+        "The explanation field should teach the topic step by step in simple language. " +
+        "The example field should contain at least one worked example with the steps clearly explained. " +
+        "The keyPoints field should contain the most important facts the student should remember. " +
+        "The practice field should contain short questions for the student to try. " +
+        "The introduction field should briefly introduce the topic in a friendly way. " +
+
+        "For Mathematics, Physics and Chemistry, use standard mathematical notation where appropriate. " +
+        "Keep the lesson appropriate for the student's level.";
 
 
     const reply = await askAITutor(prompt);
 
 
-    document.getElementById("lesson-explanation").innerHTML =
-        reply;
+    try {
 
-    document.getElementById("teacher-text").textContent =
-        "Here is your lesson on " + selectedTopic + ".";
+        const lesson = JSON.parse(reply);
+
+        document.getElementById("lesson-welcome").textContent =
+            lesson.introduction || "Let's begin this lesson.";
+
+        document.getElementById("lesson-objectives").textContent =
+            lesson.objectives || "No objectives were provided.";
+
+        document.getElementById("lesson-explanation").textContent =
+            lesson.explanation || "No explanation was provided.";
+
+        document.getElementById("lesson-example").textContent =
+            lesson.example || "No example was provided.";
+
+        document.getElementById("lesson-key-points").textContent =
+            lesson.keyPoints || "No key points were provided.";
+
+        document.getElementById("lesson-practice").textContent =
+            lesson.practice || "No practice was provided.";
+
+        document.getElementById("teacher-text").textContent =
+            "Here is your lesson on " + selectedTopic + ".";
+
+    } catch (error) {
+
+        console.error("Lesson formatting error:", error);
+
+        document.getElementById("lesson-explanation").textContent =
+            reply;
+
+        document.getElementById("teacher-text").textContent =
+            "Your lesson is ready.";
+
+    }
+
 }
 
 
