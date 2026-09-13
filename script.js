@@ -569,7 +569,7 @@ async function startLesson() {
     document.getElementById("lesson-title").textContent =
         selectedTopic + " — " + selectedSubject;
 
-    document.getElementById("lesson-explanation").textContent =
+    document.getElementById("lesson-explanation"). textcontent =
         "Your AI Tutor is preparing a lesson for you...";
 
     document.getElementById("lesson-example").textContent =
@@ -591,7 +591,7 @@ async function startLesson() {
     const reply = await askAITutor(prompt);
 
 
-    document.getElementById("lesson-explanation").textContent =
+    document.getElementById("lesson-explanation").innerHTML =
         reply;
 
     document.getElementById("teacher-text").textContent =
