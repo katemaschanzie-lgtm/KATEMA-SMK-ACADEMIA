@@ -832,3 +832,39 @@ async function askAITutor(message) {
         return "AI ERROR: " + error.message;
     }
 }
+/* =========================================
+   INTERACTIVE AI TUTOR
+========================================= */
+
+let tutorStep = 0;
+
+const tutorSteps = [
+    {
+        message: "Let's discover this topic together. 🤔",
+        question: "What do you think is the best way to begin?"
+    },
+    {
+        message: "Good thinking! Now let's go one step further. 🧠",
+        question: "Can you explain what you think is happening?"
+    },
+    {
+        message: "Excellent! Let's look at the solution step by step. ✏️",
+        question: "Are you ready to see the next step?"
+    }
+];
+
+function nextTutorStep() {
+
+    tutorStep++;
+
+    if (tutorStep >= tutorSteps.length) {
+        tutorStep = 0;
+    }
+
+    document.getElementById("tutor-message").textContent =
+        tutorSteps[tutorStep].message;
+
+    document.getElementById("tutor-question").innerHTML =
+        "<p>🤔 " + tutorSteps[tutorStep].question + "</p>";
+
+}
